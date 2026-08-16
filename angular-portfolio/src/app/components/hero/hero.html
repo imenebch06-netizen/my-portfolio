@@ -1,0 +1,67 @@
+<section id="hero">
+  <!-- Background Animated Orbs -->
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="status-badge">
+        <span class="pulse-dot"></span> Available for new opportunities
+      </div>
+      <span class="greeting">👋 Hello, I'm</span>
+      <h1>Imene <span class="text-mauve">BOUCHAREB</span></h1>
+      <p class="tagline">Full-Stack Developer &amp; <span class="text-violet">Tech Enthusiast</span></p>
+      <p class="description">
+        I build scalable web applications with <strong>NestJS</strong>, <strong>Angular</strong>, and <strong>TypeScript</strong>.
+        Passionate about clean architecture and team collaboration.
+      </p>
+      <div class="hero-actions">
+        <a mat-flat-button color="primary" href="#projects">
+          <mat-icon>work</mat-icon> View My Work
+        </a>
+        <a mat-stroked-button color="accent" href="#contact">
+          <mat-icon>mail</mat-icon> Let's Talk
+        </a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <!-- Avatar Frame with Floating Badges -->
+      <div class="avatar-container">
+        <div class="avatar-ring"></div>
+        <img 
+          src="/assets/profile.jpg" 
+          alt="Imene BOUCHAREB" 
+          class="avatar-img"
+          (error)="$any($event.target).style.display='none'" />
+
+        <!-- Floating Badges -->
+        <div class="floating-badge badge-angular">
+          <span class="badge-dot angular-color"></span> Angular
+        </div>
+        <div class="floating-badge badge-nestjs">
+          <span class="badge-dot nest-color"></span> NestJS
+        </div>
+        <div class="floating-badge badge-ts">
+          <span class="badge-dot ts-color"></span> TypeScript
+        </div>
+      </div>
+
+      <!-- Code Terminal (Positioned cleanly below the photo) -->
+      <div class="code-card">
+        <div class="code-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="filename">developer.ts</span>
+        </div>
+        <pre><code><span class="k">import</span> &#123; Developer &#125; <span class="k">from</span> <span class="s">'&#64;imene'</span>;
+
+<span class="k">const</span> me = <span class="k">new</span> <span class="f">Developer</span>(&#123;
+  stack: [<span class="s">'NestJS'</span>, <span class="s">'Angular'</span>, <span class="s">'TypeScript'</span>],
+  mission: <span class="s">'Build &amp; Scale'</span>
+&#125;);</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

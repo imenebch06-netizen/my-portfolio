@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Violet to Mauve Gradient -->
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF" />
+      <stop offset="100%" stop-color="#D4A5E8" />
+    </linearGradient>
+
+    <!-- Glowing Node Filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Rounded Container (Favicon Background) -->
+  <rect width="512" height="512" rx="112" fill="#0D0B18" />
+
+  <!-- Code Bracket < -->
+  <path 
+    d="M 200 170 L 115 256 L 200 342" 
+    stroke="url(#brandGradient)" 
+    stroke-width="38" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+
+  <!-- Stylized Monoline 'i' Stem -->
+  <path 
+    d="M 285 210 C 275 285 285 345 365 345" 
+    stroke="url(#brandGradient)" 
+    stroke-width="38" 
+    stroke-linecap="round" 
+    fill="none" 
+  />
+
+  <!-- Glowing Hexagon Node (Dot of the 'i') -->
+  <polygon 
+    points="285,122 302,132 302,152 285,162 268,152 268,132" 
+    fill="#D4A5E8" 
+    filter="url(#glow)" 
+  />
+</svg>

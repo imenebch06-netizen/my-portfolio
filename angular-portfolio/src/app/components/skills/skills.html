@@ -1,0 +1,48 @@
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2>Tech <span class="text-mauve">Distribution</span></h2>
+      <p>Breakdown of my technical focus and skill allocation.</p>
+    </div>
+
+    <div class="skills-chart-wrapper">
+      <!-- Donut Chart -->
+      <div class="chart-container">
+        <div class="donut-chart" [style.background]="conicGradient">
+          <div class="donut-hole">
+            <span class="total-label">100%</span>
+            <span class="total-sub">Full-Stack</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Breakdown Cards -->
+      <div class="skills-legend">
+        <div *ngFor="let category of skills" class="legend-card">
+          <div class="card-header">
+            <span class="color-indicator" [style.background-color]="category.color"></span>
+            <span class="category-name">{{ category.name }}</span>
+            <span class="category-percent">{{ category.percentage }}%</span>
+          </div>
+
+          <!-- Sub-Skill Breakdown -->
+          <div class="subskills-list">
+            <div *ngFor="let sub of category.subSkills" class="subskill-item">
+              <div class="subskill-info">
+                <span>{{ sub.name }}</span>
+                <span class="subskill-share">{{ sub.share }}%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div 
+                  class="progress-bar-fill" 
+                  [style.width.%]="sub.share"
+                  [style.background-color]="category.color">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

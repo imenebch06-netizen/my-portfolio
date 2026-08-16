@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+@include mat.core();
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$violet-palette,
+    tertiary: mat.$magenta-palette,
+  ),
+  typography: (
+    brand-family: 'Poppins',
+    plain-family: 'Inter, sans-serif',
+  ),
+  density: (scale: 0)
+));
+
+html {
+  @include mat.all-component-themes($dark-theme);
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-violet: #6C63FF;
+  --mauve: #D4A5E8;
+  --dark-bg: #0F0E1A;
+  --surface: #1E1B2E;
+  --text-muted: #B0A8C8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+// Prevents fixed header from overlapping section content
+.main-content {
+  padding-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-mauve { color: var(--mauve); }
+.text-violet { color: var(--primary-violet); }
+
+section {
+  scroll-margin-top: 80px;
+}
