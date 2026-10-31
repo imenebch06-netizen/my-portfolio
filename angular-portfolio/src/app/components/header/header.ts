@@ -22,8 +22,10 @@ import { MatMenuModule } from '@angular/material/menu';
 })
 export class HeaderComponent {
   navItems = [
+    { label: 'About', target: 'about' },
     { label: 'Projects', target: 'projects' },
     { label: 'Skills', target: 'skills' },
+    { label: 'Arts & Culture', target: 'arts' },
     { label: 'Contact', target: 'contact' }
   ];
 

@@ -11,5 +11,5 @@ import { Footer } from './components/footer/footer';
   styleUrls: ['./app.scss']
 })
 export class App {
-  title = 'IB. – Imene BOUCHAREB | Full-Stack Software Engineer';
+  title = 'IB. – Imene BOUCHAREB | Engineering Manager & AI · DevOps';
 }

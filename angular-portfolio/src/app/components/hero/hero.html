@@ -6,61 +6,78 @@
   <div class="container hero-content">
     <div class="hero-text">
       <div class="status-badge">
-        <span class="pulse-dot"></span> Available for new opportunities
+        <span class="pulse-dot"></span>
+        External Relations Manager @ ByteCraft Scientific Club · Open to opportunities
       </div>
-      <span class="greeting">👋 Hello, I'm</span>
+      <p class="greeting">Hello, I'm</p>
       <h1>Imene <span class="text-mauve">BOUCHAREB</span></h1>
-      <p class="tagline">Full-Stack Developer &amp; <span class="text-violet">Tech Enthusiast</span></p>
+
+      <ul class="roles">
+        <li>External Relations Manager</li>
+        <li>Full Stack Developer</li>
+        <li class="highlight">AI &amp; DevOps Explorer</li>
+      </ul>
+
       <p class="description">
-        I build scalable web applications with <strong>NestJS</strong>, <strong>Angular</strong>, and <strong>TypeScript</strong>.
-        Passionate about clean architecture and team collaboration.
+        Full Stack Developer and 1CS student at <strong>ESTIN</strong>, building
+        <strong>web applications</strong> with <strong>Angular</strong> and <strong>NestJS</strong>, and
+        exploring <strong>AI (RAG)</strong>, <strong>Docker</strong> and <strong>Kubernetes</strong>.
+        External Relations Manager at the <strong>ByteCraft</strong> scientific club.
       </p>
       <div class="hero-actions">
-        <a mat-flat-button color="primary" href="#projects">
-          <mat-icon>work</mat-icon> View My Work
+        <a class="btn btn-primary" href="#projects">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          View Projects
         </a>
-        <a mat-stroked-button color="accent" href="#contact">
-          <mat-icon>mail</mat-icon> Let's Talk
+        <a class="btn btn-outline" href="#contact">
+          Get in Touch
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
-    
+
     <div class="hero-visual">
       <!-- Avatar Frame with Floating Badges -->
       <div class="avatar-container">
         <div class="avatar-ring"></div>
-        <img 
-          src="/assets/profile.jpg" 
-          alt="Imene BOUCHAREB" 
+        <img
+          src="/assets/profile.jpg"
+          alt="Imene BOUCHAREB"
           class="avatar-img"
           (error)="$any($event.target).style.display='none'" />
 
-        <!-- Floating Badges -->
         <div class="floating-badge badge-angular">
           <span class="badge-dot angular-color"></span> Angular
         </div>
         <div class="floating-badge badge-nestjs">
           <span class="badge-dot nest-color"></span> NestJS
         </div>
-        <div class="floating-badge badge-ts">
-          <span class="badge-dot ts-color"></span> TypeScript
+        <div class="floating-badge badge-ai">
+          <span class="badge-dot ai-color"></span> AI · RAG
         </div>
       </div>
 
-      <!-- Code Terminal (Positioned cleanly below the photo) -->
+      <!-- Profile card (JSON) -->
       <div class="code-card">
         <div class="code-header">
           <span class="dot red"></span>
           <span class="dot yellow"></span>
           <span class="dot green"></span>
-          <span class="filename">developer.ts</span>
+          <span class="filename">profile.json</span>
         </div>
-        <pre><code><span class="k">import</span> &#123; Developer &#125; <span class="k">from</span> <span class="s">'&#64;imene'</span>;
-
-<span class="k">const</span> me = <span class="k">new</span> <span class="f">Developer</span>(&#123;
-  stack: [<span class="s">'NestJS'</span>, <span class="s">'Angular'</span>, <span class="s">'TypeScript'</span>],
-  mission: <span class="s">'Build &amp; Scale'</span>
-&#125;);</code></pre>
+        <pre><code>&#123;
+  <span class="key">"name"</span>: <span class="s">"Imene Bouchareb"</span>,
+  <span class="key">"age"</span>: <span class="n">20</span>,
+  <span class="key">"school"</span>: <span class="s">"ESTIN"</span>,
+  <span class="key">"level"</span>: <span class="s">"1CS"</span>,
+  <span class="key">"club"</span>: &#123;
+    <span class="key">"name"</span>: <span class="s">"ByteCraft"</span>,
+    <span class="key">"type"</span>: <span class="s">"Scientific Club"</span>,
+    <span class="key">"role"</span>: <span class="s">"External Relations Manager"</span>
+  &#125;,
+  <span class="key">"stack"</span>: [<span class="s">"Angular"</span>, <span class="s">"NestJS"</span>, <span class="s">"AI · RAG"</span>, <span class="s">"Docker"</span>, <span class="s">"Kubernetes"</span>],
+  <span class="key">"mindset"</span>: <span class="s">"Passionate"</span>
+&#125;</code></pre>
       </div>
     </div>
   </div>

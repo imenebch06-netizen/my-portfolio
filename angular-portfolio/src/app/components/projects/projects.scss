@@ -1,25 +1,247 @@
-#projects { padding: 90px 0; }
-.section-header { text-align: center; margin-bottom: 48px; }
+#projects {
+  padding: 5rem 1rem;
+  background-color: #0b0f19; /* Fond sombre moderne */
+  color: #f1f5f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* En-tête de section */
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.badge-subtitle {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.text-mauve {
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* Grille de projets */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
 }
-.project-card {
-  background: var(--surface) !important;
-  border-color: rgba(212, 165, 232, 0.15) !important;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  &:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary-violet) !important;
+
+/* Carte Moderne Futuriste */
+.modern-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Cover / screenshot du projet */
+.card-cover {
+  position: relative;
+  margin: -1.75rem -1.75rem 1.25rem -1.75rem;
+  height: 170px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0b0f19;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transform: scale(1.001);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cover-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(80% 120% at 20% 0%, rgba(108, 99, 255, 0.35) 0%, transparent 55%),
+      radial-gradient(80% 120% at 90% 100%, rgba(168, 85, 247, 0.3) 0%, transparent 55%),
+      linear-gradient(135deg, #131426 0%, #0b0f19 100%);
+
+    mat-icon {
+      font-size: 2.6rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      color: #d4a5e8;
+      opacity: 0.9;
+    }
+  }
+
+  .cover-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f1f5f9;
+    background: rgba(11, 15, 25, 0.75);
+    border: 1px solid rgba(212, 165, 232, 0.35);
+    backdrop-filter: blur(6px);
   }
 }
-.project-desc {
-  margin: 16px 0;
-  color: var(--text-muted);
-  line-height: 1.6;
+
+.modern-card:hover .card-cover img {
+  transform: scale(1.06);
 }
-mat-chip {
-  background-color: rgba(108, 99, 255, 0.15) !important;
-  color: var(--mauve) !important;
+
+.modern-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(192, 132, 252, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.icon-wrapper {
+  background: rgba(192, 132, 252, 0.1);
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Badges Tech Badges avec points lumineux */
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+}
+
+.tech-badge .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #c084fc;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #c084fc;
+}
+
+/* Boutons d'action */
+.card-footer {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-github {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #e2e8f0 !important;
+  border-radius: 10px !important;
+  flex: 1;
+}
+
+.btn-github:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.btn-demo {
+  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  flex: 1;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.3);
+}
+
+.btn-demo:hover {
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+}
+
+/* États de chargement et d'erreur */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+  gap: 1rem;
+  color: #94a3b8;
 }

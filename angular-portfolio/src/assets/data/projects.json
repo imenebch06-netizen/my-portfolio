@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce App",
+    "description": "Application e-commerce développée avec Angular et Tailwind.",
+    "tech": ["Angular", "TypeScript", "Tailwind CSS"],
+    "link": "https://github.com/imenebch06-netizen/bytie-game",
+    "demo": "https://bytie-game.vercel.app",
+    "icon": "shopping_cart"
+  },
+  {
+    "id": 2,
+    "title": "Acri",
+    "description": "Gestionnaire de tâches dynamique avec Angular Material.",
+    "tech": ["Angular", "Material", "RxJS"],
+    "link": "https://github.com/imenebch06-netizen/chrono-app",
+    "demo": "https://chrono-app-2.onrender.com",
+    "icon": "task"
+  },
+  {
+    "id": 3,
+    "title": "Logiciel de gestion de temps & d'activité.",
+    "description": "Gestionnaire de tâches dynamique avec Angular Material.",
+    "tech": ["Angular", "Material", "RxJS"],
+    "link": "https://github.com/imenebch06-netizen/astro-nerd",
+    "demo": "https://astro-nerd-beta.vercel.app",
+    "icon": "task"
+  },
+  {
+    "id": 4,
+    "title": "Logiciel de gestion de temps & d'activité.",
+    "description": "Gestionnaire de tâches dynamique avec Angular Material.",
+    "tech": ["Angular", "Material", "RxJS"],
+    "link": "https://github.com/imenebch06-netizen/flask-docker-swarm",
+    "demo": "",
+    "icon": "task"
+  },
+  {
+    "id": 5,
+    "title": "Logiciel de gestion de temps & d'activité.",
+    "description": "Gestionnaire de tâches dynamique avec Angular Material.",
+    "tech": ["Angular", "Material", "RxJS"],
+    "link": "https://github.com/imenebch06-netizen/f1-rag-project",
+    "demo": "",
+    "icon": "task"
+  }
+
+]

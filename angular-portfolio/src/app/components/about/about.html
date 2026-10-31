@@ -1,0 +1,62 @@
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge-subtitle">about me</span>
+      <h2>A Curious Mind, <span class="text-mauve">A Creative Soul</span></h2>
+      <p>Code, club life and culture , a quick look at who I am beyond the repositories!</p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Story column -->
+      <div class="about-story">
+        <p>
+          I'm <strong>Imene Bouchareb</strong>, a motivated and passionate
+          <strong>first-year Computer Science student (1CS) at ESTIN</strong>.
+          Web development is where I feel most at home , building interfaces and
+          full-stack applications with care and attention to detail.
+        </p>
+        <p>
+          But I've never limited myself to one domain. My curiosity keeps pulling me into
+          <strong>Artificial Intelligence</strong>, where I've explored building
+          <strong>RAG systems</strong>, and into <strong>infrastructure & DevOps</strong>,
+          experimenting with <strong>dockerisation</strong> and <strong>Kubernetes</strong> since i had a huge passion to improve myself in the physical aspect.
+        </p>
+        <p>
+          Outside the terminal, I have a deep love for <strong>art and culture</strong> —
+          I've always enjoyed contributing to the cultural and artistic events happening
+          around my school.
+        </p>
+
+        <div class="domain-title">Domains I play with</div>
+        <div class="domain-chips">
+          <mat-chip-set>
+            @for (domain of domains; track domain) {
+              <mat-chip>
+                <mat-icon matChipAvatar>bolt</mat-icon>
+                {{ domain }}
+              </mat-chip>
+            }
+          </mat-chip-set>
+        </div>
+      </div>
+
+      <!-- Pillar cards -->
+      <div class="about-cards">
+        @for (pillar of pillars; track pillar.title) {
+          <div class="info-card">
+            <div class="card-head">
+              <div class="icon-wrapper">
+                <mat-icon>{{ pillar.icon }}</mat-icon>
+              </div>
+              <div>
+                <h3>{{ pillar.title }}</h3>
+                <span class="role">{{ pillar.role }}</span>
+              </div>
+            </div>
+            <p>{{ pillar.text }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

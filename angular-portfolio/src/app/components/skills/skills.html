@@ -1,47 +1,138 @@
 <section id="skills">
   <div class="container">
     <div class="section-header">
+      <span class="badge-subtitle">stack · technical breakdown</span>
       <h2>Tech <span class="text-mauve">Distribution</span></h2>
       <p>Breakdown of my technical focus and skill allocation.</p>
     </div>
 
-    <div class="skills-chart-wrapper">
-      <!-- Donut Chart -->
-      <div class="chart-container">
-        <div class="donut-chart" [style.background]="conicGradient">
-          <div class="donut-hole">
-            <span class="total-label">100%</span>
-            <span class="total-sub">Full-Stack</span>
-          </div>
+    <div class="skills-layout">
+      <!-- ===== Chart card ===== -->
+      <div class="modern-card chart-card">
+        <div class="card-topbar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="filename">distribution.json</span>
         </div>
-      </div>
 
-      <!-- Skill Breakdown Cards -->
-      <div class="skills-legend">
-        <div *ngFor="let category of skills" class="legend-card">
-          <div class="card-header">
-            <span class="color-indicator" [style.background-color]="category.color"></span>
-            <span class="category-name">{{ category.name }}</span>
-            <span class="category-percent">{{ category.percentage }}%</span>
-          </div>
+        <div class="card-meta">
+          <span class="tech-badge"><span class="dot-glow"></span>{{ skills.length }} domains</span>
+          <span class="tech-badge"><span class="dot-glow"></span>total 100%</span>
+        </div>
 
-          <!-- Sub-Skill Breakdown -->
-          <div class="subskills-list">
-            <div *ngFor="let sub of category.subSkills" class="subskill-item">
-              <div class="subskill-info">
-                <span>{{ sub.name }}</span>
-                <span class="subskill-share">{{ sub.share }}%</span>
-              </div>
-              <div class="progress-bar-bg">
-                <div 
-                  class="progress-bar-fill" 
-                  [style.width.%]="sub.share"
-                  [style.background-color]="category.color">
-                </div>
-              </div>
+        <div class="donut-stage" [style.--n]="skills.length + ''">
+          <!-- Floating chips orbiting the chart -->
+          @for (category of skills; track category.name; let i = $index) {
+            <div
+              class="orbit-chip"
+              tabindex="0"
+              [class.is-active]="hoveredIndex === i"
+              [style.--i]="i + ''"
+              [style.--chip-color]="category.color"
+              (mouseenter)="onHover(i)"
+              (mouseleave)="onLeave()"
+              (focus)="onHover(i)"
+              (blur)="onLeave()">
+              <span class="orbit-chip-inner" [style.animation-delay]="(i * -0.9) + 's'">
+                <span class="chip-dot"></span>
+                <span class="chip-name">{{ category.name }}</span>
+              </span>
+            </div>
+          }
+
+          <!-- Donut Chart -->
+          <div class="donut-visual">
+            <svg class="donut-chart" viewBox="0 0 200 200" role="img" [attr.aria-label]="hovered ? hovered.name : 'Tech stack distribution'">
+              <circle class="donut-track" cx="100" cy="100" r="80" fill="none" pathLength="100"></circle>
+              <g class="donut-segments" transform="rotate(-90 100 100)">
+                @for (segment of segments; track segment.category.name; let i = $index) {
+                  <circle
+                    class="donut-segment"
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    [class.is-hovered]="hoveredIndex === i"
+                    [style.stroke]="segment.category.color"
+                    [style.stroke-width.px]="hoveredIndex === i ? 30 : 24"
+                    [style.opacity]="hoveredIndex !== null && hoveredIndex !== i ? 0.3 : 1"
+                    [attr.pathLength]="100"
+                    [attr.stroke-dasharray]="segmentDasharray(i)"
+                    [attr.stroke-dashoffset]="segmentOffset(i)"
+                    (mouseenter)="onHover(i)"
+                    (mouseleave)="onLeave()">
+                  </circle>
+                }
+              </g>
+            </svg>
+            <div class="donut-hole">
+              <span class="total-label">{{ hovered ? hovered.percentage + '%' : '100%' }}</span>
+              <span class="total-sub">{{ hovered ? hovered.name : 'Code × Art' }}</span>
             </div>
           </div>
         </div>
+
+        <!-- Floating tooltip (chart segments, chips and list all feed it) -->
+        <div class="tooltip-slot" aria-live="polite">
+          @if (hovered) {
+            <div class="chart-tooltip" [style.--accent]="hovered.color">
+              <div class="tooltip-head">
+                <span class="tooltip-category">{{ hovered.name }}</span>
+                <span class="tooltip-percent">{{ hovered.percentage }}%</span>
+              </div>
+              <ul class="tooltip-subs">
+                @for (sub of hoveredSubSkills; track sub.name) {
+                  <li class="tooltip-sub">
+                    <span class="tooltip-sub-name">{{ sub.name }}</span>
+                    <span class="tooltip-sub-share">{{ sub.share }}%</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          } @else {
+            <div class="tooltip-hint">
+              <span class="hint-prompt">&gt;</span> hover a segment to inspect<span class="caret"></span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- ===== Skill breakdown cards ===== -->
+      <div class="skills-legend">
+        @for (category of skills; track category.name; let i = $index) {
+          <div
+            class="modern-card legend-card"
+            [class.hovered]="hoveredIndex === i"
+            [style.--accent]="category.color"
+            (mouseenter)="onHover(i)"
+            (mouseleave)="onLeave()">
+            <div class="card-header">
+              <span class="card-index">{{ i < 9 ? '0' + (i + 1) : i + 1 }}</span>
+              <span class="color-indicator" [style.background-color]="category.color"></span>
+              <span class="category-name">{{ category.name }}</span>
+              <span class="category-percent">{{ category.percentage }}%</span>
+            </div>
+
+            <div class="subskills-list">
+              @for (sub of category.subSkills; track sub.name) {
+                <div class="subskill-item">
+                  <div class="subskill-info">
+                    <span class="subskill-name">{{ sub.name }}</span>
+                    <span class="subskill-share">{{ sub.share }}%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div
+                      class="progress-bar-fill"
+                      [style.width.%]="sub.share"
+                      [style.background-color]="category.color">
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
       </div>
     </div>
   </div>

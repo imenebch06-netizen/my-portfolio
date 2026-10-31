@@ -1,30 +1,84 @@
 <section id="projects">
   <div class="container">
     <div class="section-header">
+      <span class="badge-subtitle">github · synced in real time</span>
       <h2>Featured <span class="text-mauve">Projects</span></h2>
-      <p>Real-world applications I've built and deployed.</p>
+      <p>Real-world applications and open-source work, straight from my GitHub.</p>
     </div>
 
-    <div class="projects-grid">
-      <mat-card *ngFor="let project of projects" class="project-card" appearance="outlined">
-        <mat-card-header>
-          <mat-icon mat-card-avatar color="primary">{{ project.icon }}</mat-icon>
-          <mat-card-title>{{ project.title }}</mat-card-title>
-        </mat-card-header>
-        
-        <mat-card-content>
-          <p class="project-desc">{{ project.description }}</p>
-          <mat-chip-set aria-label="Tech Stack">
-            <mat-chip *ngFor="let tech of project.tech">{{ tech }}</mat-chip>
-          </mat-chip-set>
-        </mat-card-content>
-        
-        <mat-card-actions>
-         <a mat-stroked-button color="accent" [href]="project.link" target="_blank">
-  <mat-icon>code</mat-icon> View GitHub source
-</a>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    @if (isLoading()) {
+      <div class="loading-container">
+        <mat-spinner diameter="48" color="accent"></mat-spinner>
+        <p>Loading projects from GitHub...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-container">
+        <p class="error-msg">{{ error() }}</p>
+        <button mat-raised-button color="primary" (click)="loadProjects()">
+          <mat-icon>refresh</mat-icon> Retry
+        </button>
+      </div>
+    } @else {
+      <div class="projects-grid">
+        @for (repo of repos(); track repo.id) {
+          <div class="modern-card">
+            <!-- Glow Effect en arrière plan -->
+            <div class="card-glow"></div>
+
+            <!-- Live cover (screenshot) -->
+            <div class="card-cover">
+              @if (!isCoverBroken(repo)) {
+                <img [src]="repo.cover" [alt]="'Live preview of ' + repo.title" loading="lazy" (error)="onCoverError(repo.id)" />
+              } @else {
+                <div class="cover-fallback">
+                  <mat-icon>{{ repo.icon }}</mat-icon>
+                </div>
+              }
+              @if (repo.coverFallback) {
+                <span class="cover-tag">GitHub</span>
+              }
+            </div>
+
+            <div class="card-header">
+              <div class="icon-wrapper">
+                <mat-icon color="accent">{{ repo.icon }}</mat-icon>
+              </div>
+              <h3 class="project-title">{{ repo.title }}</h3>
+            </div>
+
+            <div class="card-body">
+              <p class="project-desc">{{ repo.description }}</p>
+
+              <!-- Stack technique stylisée -->
+              @if (repo.tech && repo.tech.length > 0) {
+                <div class="tech-stack-container">
+                  @for (tech of repo.tech; track tech) {
+                    <span class="tech-badge">
+                      <span class="dot"></span>
+                      {{ tech }}
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="card-footer">
+              <a mat-stroked-button class="btn-github" [href]="repo.link" target="_blank" rel="noopener">
+                <mat-icon>code</mat-icon> Code Source
+              </a>
+
+              <!-- Démo Live s'affiche si une URL valide est détectée -->
+              @if (repo.demo) {
+                <a mat-flat-button class="btn-demo" [href]="repo.demo" target="_blank" rel="noopener">
+                  <mat-icon>launch</mat-icon> Live Demo
+                </a>
+              }
+            </div>
+          </div>
+        } @empty {
+          <p class="empty-state">No public repositories found on this GitHub account.</p>
+        }
+      </div>
+    }
   </div>
 </section>

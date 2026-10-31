@@ -1,0 +1,40 @@
+<section id="arts">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge-subtitle">beyond the code</span>
+      <h2>Arts &amp; <span class="text-mauve">Culture</span></h2>
+      <p>Where logic meets imagination — my life around the campus cultural scene.</p>
+    </div>
+
+    <p class="arts-intro">
+      I've always been drawn to <strong>art in every form</strong>. Drawing is my favorite way to
+      slow down and express what code cannot say. At <strong>ESTIN</strong>, I never miss an
+      opportunity to contribute to the <strong>cultural and artistic events</strong> organized on
+      campus: the <strong>Opening Day</strong> competition and the scientific club exhibition in 2025,
+      a drawing for <strong>Yennayer</strong>, <strong>Art Week</strong> in April 2026, and most recently
+      the <strong>Octobre Rose</strong> exhibition, where I <strong>displayed my own drawings</strong>.
+    </p>
+
+    <div class="gallery-grid">
+      @for (photo of photos; track photo.src; let i = $index) {
+        <figure class="art-frame" [class.broken]="broken[i]">
+          @if (broken[i]) {
+            <div class="placeholder">
+              <mat-icon>palette</mat-icon>
+              <span>Photo coming soon</span>
+              <small>{{ photo.title }}</small>
+            </div>
+          } @else {
+            <img
+              [src]="photo.src"
+              [alt]="photo.title"
+              loading="lazy"
+              (error)="onImgError(i)" />
+            <span class="frame-tag"><span class="dot-glow"></span>{{ photo.tag }} · {{ photo.date }}</span>
+            <figcaption>{{ photo.title }}</figcaption>
+          }
+        </figure>
+      }
+    </div>
+  </div>
+</section>
